@@ -1,0 +1,83 @@
+{
+  "name": "viverstl",
+  "version": "1.0.0",
+  "description": "Быстрый просмотрщик STL файлов",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.viverstl.app",
+    "productName": "ViverSTL",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "node_modules/three/build/three.module.js",
+      "node_modules/three/examples/jsm/loaders/STLLoader.js",
+      "node_modules/three/examples/jsm/controls/OrbitControls.js",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico",
+      "fileAssociations": [
+        {
+          "ext": "stl",
+          "name": "STL 3D Model",
+          "description": "STL 3D model file",
+          "icon": "assets/icon.ico",
+          "role": "Viewer"
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "mac": {
+      "target": "dmg",
+      "fileAssociations": [
+        {
+          "ext": "stl",
+          "name": "STL 3D Model",
+          "role": "Viewer"
+        }
+      ]
+    },
+    "linux": {
+      "target": "AppImage",
+      "fileAssociations": [
+        {
+          "ext": "stl",
+          "name": "STL 3D Model",
+          "role": "Viewer"
+        }
+      ]
+    }
+  },
+  "keywords": [
+    "stl",
+    "viewer",
+    "3d",
+    "electron"
+  ],
+  "author": "ViverSTL Team (Created by JEKBlck & Gemini AI)",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3",
+    "svg-to-ico": "^2.0.0"
+  }
+}
